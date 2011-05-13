@@ -128,7 +128,9 @@ setlocal smartindent
 " set t_Co=256
 
 set cursorline
+set statusline=%F%m%r%h%w\ \ %Y\ (%l,%v)\ %p%%\ %Ll
 set laststatus=2
+
 "set clipboard=unnamed
 "set go+=a
 "vnoremap y "+y
