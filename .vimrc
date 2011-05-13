@@ -1,4 +1,5 @@
 colorscheme darkblue
+set nocompatible
 " set expandtab
 " set tabstop=4
 " set shiftwidth=4
@@ -135,6 +136,9 @@ set laststatus=2
 se nu
 set mouse=a
 set background=dark
+
+set scrolloff=5
+set viminfo='20,<50,s10,h,%
 
 "http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard
 "sudo apt-get install xclip
