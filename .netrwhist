@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/Users/timothywatts/projects/readevalprint.github.com/content'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/tim/pycio_head/djangovoice'
+let g:netrw_dirhist_2='/home/tim/pycio_head/paste'
+let g:netrw_dirhist_3='/home/tim/pycio_head/lazysignup'
+let g:netrw_dirhist_4='/home/tim/pycio_head/templates/python/koans'

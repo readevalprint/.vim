@@ -1,5 +1,28 @@
 colorscheme darkblue
-set nocompatible
+set ttymouse=xterm2
+set mouse=a
+
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype on
+set backspace=indent,eol,start
+
+" Folding based on indentation:
+set foldmethod=indent
+set foldlevel=99
+
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+map <leader>g :GundoToggle<CR>
+map <leader>dt :set makeprg=python\ manage.py\ test\|:call MakeGreen()<CR>
+map <leader>td <Plug>TaskList
+map <leader>n :NERDTreeToggle<CR>
+
+
 " set expandtab
 " set tabstop=4
 " set shiftwidth=4
@@ -37,7 +60,7 @@ fu Select_c_style()
     if search('^\t', 'n', 150)
         set shiftwidth=8
         set noexpandtab
-    el 
+    el
         set shiftwidth=4
         set expandtab
     en
@@ -59,7 +82,7 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 " Uncomment this if you want to limit your textwidth in python
 " can be very annoying ..
 " au BufRead,BufNewFile *.py,*.pyc set textwidth=79
-au BufRead,BufNewFile *.c,*.h set textwidth=79
+" au BufRead,BufNewFile *.c,*.h set textwidth=79
 
 " Turn off settings in 'formatoptions' relating to comment formatting.
 " - c : do not automatically insert the comment leader when wrapping based on
@@ -82,7 +105,7 @@ au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 " The following section contains suggested settings.  While in no way required
 " to meet coding standards, they are helpful.
 
-" Set the default file encoding to UTF-8: 
+" Set the default file encoding to UTF-8:
 set encoding=utf-8
 
 " Puts a marker at the beginning of the file to differentiate between UTF and
@@ -93,14 +116,12 @@ set encoding=utf-8
 let python_highlight_all=1
 syntax on
 
-" Automatically indent based on file type: 
+" Automatically indent based on file type:
 "filetype indent on
-" Keep indentation level from previous line: 
+" Keep indentation level from previous line:
 "set autoindent
 
-" Folding based on indentation: 
-set foldmethod=indent
-set nofoldenable
+
 
 """"""""""""""""""""""""""""""""
 " END http://svn.python.org/projects/python/trunk/Misc/Vim/vimrc
@@ -113,14 +134,12 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-" autocmd Filetype html,xml,xsl source ~/.vim/plugins/closetag.vim 
 
 " inoremap <Nul> <C-x><C-o>
 
 " setlocal tabstop=4
 set softtabstop=4
 setlocal shiftwidth=4
-setlocal textwidth=80
 setlocal smarttab
 setlocal expandtab
 setlocal smartindent
@@ -128,9 +147,7 @@ setlocal smartindent
 " set t_Co=256
 
 set cursorline
-set statusline=%F%m%r%h%w\ \ %Y\ (%l,%v)\ %p%%\ %Ll
 set laststatus=2
-
 "set clipboard=unnamed
 "set go+=a
 "vnoremap y "+y
@@ -138,9 +155,6 @@ set laststatus=2
 se nu
 set mouse=a
 set background=dark
-
-set scrolloff=5
-set viminfo='20,<50,s10,h,%
 
 "http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard
 "sudo apt-get install xclip
@@ -161,4 +175,13 @@ endif
 
 set vb
 
-
+"Many people like to remove any extra whitespace from the ends of lines. Here is one way to do it when saving your file.
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+set autochdir
+set statusline=%F%m%r%h%w\ %{&ff}\ \ %y\ %p%%\ (%l,%v)
