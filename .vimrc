@@ -1,7 +1,7 @@
 colorscheme darkblue
 set ttymouse=xterm2
 set mouse=a
-
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
@@ -54,7 +54,7 @@ au BufRead,BufNewFile *py,*pyw,*.c,*.h,*html,*js set tabstop=8
 " This will affect Ctrl-T and 'autoindent'.
 " Python: 4 spaces
 " C: tabs (pre-existing files) or 4 spaces (new files)
-au BufRead,BufNewFile *.py,*pyw,*.html,*.js set shiftwidth=4
+au BufRead,BufNewFile *.py,*pyw,*.js set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw,*.html,*.js set expandtab
 fu Select_c_style()
     if search('^\t', 'n', 150)
@@ -134,6 +134,8 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType python compiler pylint
+
 
 " inoremap <Nul> <C-x><C-o>
 
@@ -185,3 +187,5 @@ endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 set autochdir
 set statusline=%F%m%r%h%w\ %{&ff}\ \ %y\ %p%%\ (%l,%v)
+set cc=80
+autocmd FileType htmldjango set tabstop=2|set shiftwidth=2|set expandtab

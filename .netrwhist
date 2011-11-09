@@ -1,6 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/tim/pycio_head/djangovoice'
 let g:netrw_dirhist_2='/home/tim/pycio_head/paste'
 let g:netrw_dirhist_3='/home/tim/pycio_head/lazysignup'
 let g:netrw_dirhist_4='/home/tim/pycio_head/templates/python/koans'
+let g:netrw_dirhist_5='/home/tim/readevalprint.github.com/content'
+let g:netrw_dirhist_6='/home/tim/kitsune/apps/questions/templates/questions/email'
+let g:netrw_dirhist_7='/home/tim/kitsune/configs/redis'
